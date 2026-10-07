@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html { scroll-behavior: smooth; }
+body { @apply bg-paper text-ink antialiased; }
+section[id] { scroll-margin-top: 4.5rem; }
+input[type="range"] { accent-color: #1d5c4b; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+@keyframes reveal-x { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+.reveal-x { animation: reveal-x 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.25s both; }
+@keyframes dialog-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.start-dialog[open] { animation: dialog-in 160ms ease-out; }
+.start-dialog::backdrop { background: rgb(20 22 26 / 0.35); }
+@media (prefers-reduced-motion: reduce) { .reveal-x, .start-dialog[open] { animation: none; } }
+@keyframes fade-late { from { opacity: 0; } to { opacity: 1; } }
+.fade-late { animation: fade-late 0.4s ease-out 1.3s both; }
+@media (prefers-reduced-motion: reduce) { .fade-late { animation: none; } }
